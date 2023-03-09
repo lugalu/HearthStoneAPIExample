@@ -13,9 +13,13 @@
 		09513C0F29BAA0F6004243BD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09513C0D29BAA0F6004243BD /* Main.storyboard */; };
 		09513C1129BAA0F7004243BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09513C1029BAA0F7004243BD /* Assets.xcassets */; };
 		09513C1429BAA0F7004243BD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09513C1229BAA0F7004243BD /* LaunchScreen.storyboard */; };
+		096C2EA629BAA5C9006865CF /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096C2EA529BAA5C9006865CF /* TabBar.swift */; };
+		096C2EA929BAA95D006865CF /* APIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096C2EA829BAA95D006865CF /* APIKeys.swift */; };
+		4B666CA3EDA285D103D53C20 /* Pods_HearthStoneAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02C83017823898075BEFE139 /* Pods_HearthStoneAPI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		02C83017823898075BEFE139 /* Pods_HearthStoneAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HearthStoneAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		09513C0429BAA0F6004243BD /* HearthStoneAPI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HearthStoneAPI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		09513C0729BAA0F6004243BD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		09513C0929BAA0F6004243BD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +28,10 @@
 		09513C1029BAA0F7004243BD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		09513C1329BAA0F7004243BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		09513C1529BAA0F7004243BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		096C2EA529BAA5C9006865CF /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
+		096C2EA829BAA95D006865CF /* APIKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeys.swift; sourceTree = "<group>"; };
+		501BCD7A259C0145945EC0AA /* Pods-HearthStoneAPI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HearthStoneAPI.debug.xcconfig"; path = "Target Support Files/Pods-HearthStoneAPI/Pods-HearthStoneAPI.debug.xcconfig"; sourceTree = "<group>"; };
+		BB7149271998CEF2D5A50279 /* Pods-HearthStoneAPI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HearthStoneAPI.release.xcconfig"; path = "Target Support Files/Pods-HearthStoneAPI/Pods-HearthStoneAPI.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +39,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B666CA3EDA285D103D53C20 /* Pods_HearthStoneAPI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0086AEEF6F695B2ACDBCC28C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				501BCD7A259C0145945EC0AA /* Pods-HearthStoneAPI.debug.xcconfig */,
+				BB7149271998CEF2D5A50279 /* Pods-HearthStoneAPI.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		09513BFB29BAA0F6004243BD = {
 			isa = PBXGroup;
 			children = (
 				09513C0629BAA0F6004243BD /* HearthStoneAPI */,
 				09513C0529BAA0F6004243BD /* Products */,
+				0086AEEF6F695B2ACDBCC28C /* Pods */,
+				3693F37BD7D594A674446DCC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,6 +76,8 @@
 		09513C0629BAA0F6004243BD /* HearthStoneAPI */ = {
 			isa = PBXGroup;
 			children = (
+				096C2EA729BAA94D006865CF /* API */,
+				096C2EA429BAA5BB006865CF /* TabBar */,
 				09513C0729BAA0F6004243BD /* AppDelegate.swift */,
 				09513C0929BAA0F6004243BD /* SceneDelegate.swift */,
 				09513C0B29BAA0F6004243BD /* ViewController.swift */,
@@ -67,6 +89,30 @@
 			path = HearthStoneAPI;
 			sourceTree = "<group>";
 		};
+		096C2EA429BAA5BB006865CF /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				096C2EA529BAA5C9006865CF /* TabBar.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		096C2EA729BAA94D006865CF /* API */ = {
+			isa = PBXGroup;
+			children = (
+				096C2EA829BAA95D006865CF /* APIKeys.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		3693F37BD7D594A674446DCC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				02C83017823898075BEFE139 /* Pods_HearthStoneAPI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -74,9 +120,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 09513C1829BAA0F7004243BD /* Build configuration list for PBXNativeTarget "HearthStoneAPI" */;
 			buildPhases = (
+				6F4CE51AA4274CDBF686A042 /* [CP] Check Pods Manifest.lock */,
 				09513C0029BAA0F6004243BD /* Sources */,
 				09513C0129BAA0F6004243BD /* Frameworks */,
 				09513C0229BAA0F6004243BD /* Resources */,
+				835EADB317F963709F0F76C3 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -133,14 +181,58 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		6F4CE51AA4274CDBF686A042 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HearthStoneAPI-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		835EADB317F963709F0F76C3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HearthStoneAPI/Pods-HearthStoneAPI-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HearthStoneAPI/Pods-HearthStoneAPI-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HearthStoneAPI/Pods-HearthStoneAPI-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		09513C0029BAA0F6004243BD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				09513C0C29BAA0F6004243BD /* ViewController.swift in Sources */,
+				096C2EA929BAA95D006865CF /* APIKeys.swift in Sources */,
 				09513C0829BAA0F6004243BD /* AppDelegate.swift in Sources */,
 				09513C0A29BAA0F6004243BD /* SceneDelegate.swift in Sources */,
+				096C2EA629BAA5C9006865CF /* TabBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,6 +374,7 @@
 		};
 		09513C1929BAA0F7004243BD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 501BCD7A259C0145945EC0AA /* Pods-HearthStoneAPI.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -292,9 +385,8 @@
 				INFOPLIST_FILE = HearthStoneAPI/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -302,14 +394,18 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.lugaluStudy.HearthStoneAPI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		09513C1A29BAA0F7004243BD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BB7149271998CEF2D5A50279 /* Pods-HearthStoneAPI.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -320,9 +416,8 @@
 				INFOPLIST_FILE = HearthStoneAPI/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -330,9 +425,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.lugaluStudy.HearthStoneAPI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
