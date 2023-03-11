@@ -7,7 +7,10 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class CardSearchView: UIViewController, TabBarConformant {
+    var titleKey: String = "Cards"
+    var image: String = "doc.text.fill"
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
