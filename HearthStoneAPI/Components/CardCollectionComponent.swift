@@ -7,31 +7,20 @@
 
 import UIKit
 
-class CardCollectionComponent: UICollectionViewController {
+class CardCollectionComponent: UICollectionView {
     var cellConfiguration: CellConformant? = nil
     
-    init(cellConfiguration: CellConformant) {
+    init(cellConfiguration: CellConformant, layout: UICollectionViewLayout = UICollectionViewFlowLayout()) {
         self.cellConfiguration = cellConfiguration
-        super.init(nibName: nil, bundle: nil)
+        super.init(frame: .zero, collectionViewLayout: layout)
+        self.register(type(of: cellConfiguration), forCellWithReuseIdentifier: cellConfiguration.identifier)
+
     }
     
     required init?(coder: NSCoder) {
-        super.init(nibName: nil, bundle: nil)
-    }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        guard let cellConfiguration else { return }
-        collectionView.register(type(of: cellConfiguration), forCellWithReuseIdentifier: cellConfiguration.identifier)
+        super.init(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+        fatalError("init(coder:) has not been implemented")
     }
 }
 
-protocol CellConformant: UICollectionViewCell{
-    var identifier: String { get }
-    func configure(with: CardCellData)
-}
 
-protocol CardCellData{
-    var cardImage:UIImage {get}
-    var cardTitle: String {get}
-}
