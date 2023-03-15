@@ -43,6 +43,3 @@ protocol CardDetailsViewProtocol{
 }
 
 
-protocol DataProviderService{
-    
-}
