@@ -12,9 +12,9 @@ struct Info: Decodable{
     var classes: [String]
     var sets: [String]
     var types: [String]
-    var faction: [String]
+    var factions: [String]
     var qualities: [String]
-    var race: [String]
+    var races: [String]
     var locales: [String: String]
     
 }

@@ -10,9 +10,11 @@ import Foundation
 protocol DataProviderService{
     var globalInfo: Info? {get set}
     
-    func requestCards(request: [String: String]) async throws -> [Data]
-    func requestCards() async throws -> [Data]
-    func requestCardBacks() async throws -> [Data]
+    func requestCards(request: [String: String]) async throws -> Data
+    func requestCards() async throws -> Data
+    func requestCardBacks() async throws -> Data
     func getInfo() async throws -> Info
-    func getInfo() -> Info
+    func getInfo(handler: @escaping (Result<Info,Error>) -> ()?)
 }
+
+

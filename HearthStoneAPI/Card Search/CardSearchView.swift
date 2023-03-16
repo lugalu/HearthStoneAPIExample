@@ -49,6 +49,8 @@ class CardSearchView: UIViewController, TabBarConformant, CardSearchViewProtocol
         searchBar.delegate = self
         cardCollection.delegate = self
         cardCollection.dataSource = self
+        
+        
     }
 
     func updateCurrentData(_ newData: [CardCellData]) {

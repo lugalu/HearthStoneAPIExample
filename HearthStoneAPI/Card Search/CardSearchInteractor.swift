@@ -12,7 +12,7 @@ class CardSearchInteractor: CardSearchInteractorProtocol{
     
     var service: DataProviderService
     
-    init(presenter: CardSearchPresenterProtocol, service: DataProviderService = DefaultImplementation()){
+    init(presenter: CardSearchPresenterProtocol, service: DataProviderService = NativeService()){
         self.presenter = presenter
         self.service = service
     }
@@ -28,10 +28,5 @@ class CardSearchInteractor: CardSearchInteractorProtocol{
     func failedToRetrieve(_ error: Error) {
         
     }
-    
-    
-}
-
-class DefaultImplementation: DataProviderService {
     
 }

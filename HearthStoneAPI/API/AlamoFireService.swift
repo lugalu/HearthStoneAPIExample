@@ -6,12 +6,13 @@
 //
 
 import Alamofire
+import SwiftyJSON
 
 class AlamoFireService: DataProviderService{
     private var internalInfo: Info? = nil
     var globalInfo: Info?{
         get{
-            return internalInfo ?? getInfo()
+            return internalInfo
         }
         set{
             internalInfo = newValue
@@ -20,23 +21,31 @@ class AlamoFireService: DataProviderService{
     }
     
     init() {
-        self.globalInfo = self.getInfo()
+        Task{
+            do{
+                let info = try await self.getInfo()
+                globalInfo = info
+            }catch{
+                print("Error \(error.localizedDescription)")
+            }
+            
+        }
     }
     
-    func requestCards(request: [String : String]) async throws -> [Data] {
+    func requestCards(request: [String : String]) async throws -> Data {
         
         
         
         
-        return []
+        return Data()
     }
     
-    func requestCards() async throws -> [Data] {
-        return []
+    func requestCards() async throws -> Data {
+        return Data()
     }
     
-    func requestCardBacks() async throws -> [Data] {
-        return []
+    func requestCardBacks() async throws -> Data {
+        return Data()
     }
     
     func getInfo() async throws -> Info {
@@ -44,19 +53,36 @@ class AlamoFireService: DataProviderService{
             return globalInfo
         }
         
-        var tempInfo = Info(patch: "", classes: [], sets: [], types: [], faction: [], qualities: [], race: [], locales: ["":""])
+        var tempInfo = Info(patch: "", classes: [], sets: [], types: [], factions: [], qualities: [], races: [], locales: ["":""])
         globalInfo = tempInfo
         return tempInfo
     }
     
-    func getInfo() -> Info {
+    func getInfo(handler: @escaping (Result<Info,Error>) -> ()?){
         if let globalInfo {
-            return globalInfo
+            handler(.success(globalInfo))
+        }
+        guard let url = URL(string: APIKeys.API_ENDPOINT+"info") else {
+            handler(.failure(DataErrors.urlFail))
+            return
         }
         
-        var tempInfo = Info(patch: "", classes: [], sets: [], types: [], faction: [], qualities: [], race: [], locales: ["":""])
-        globalInfo = tempInfo
-        return tempInfo
+        URLSession.shared.dataTask(with: URLRequest(url: url), completionHandler: { data, _, error in
+            if let error, data == nil{
+                handler(.failure(error))
+            }
+            
+            do{
+                let info = try JSONDecoder().decode(Info.self, from: data!) as Info
+                self.globalInfo = info
+                handler(.success(info))
+                
+            }catch{
+                handler(.failure(DataErrors.decodeFail))
+            }
+            
+        })
+    
     }
     
     
