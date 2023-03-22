@@ -16,19 +16,8 @@ class CardSearchRouter: CardSearchRouterProtocol{
         view.presenter = presenter
         presenter.view = view
         presenter.interactor = interactor
-        let native = NativeService()
-        Task{
-            do{
-                print("here")
-                let info = try await native.getInfo()
-                //native.globalInfo = info
-                print("VALUE \(info)")
-            }catch{
-                print("Error in init \(error.localizedDescription)")
-            }
-            
-        }
-        
+
+    
         
         return view
     }

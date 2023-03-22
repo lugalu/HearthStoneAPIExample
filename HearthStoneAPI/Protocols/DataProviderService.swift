@@ -14,7 +14,7 @@ protocol DataProviderService{
     func requestCards() async throws -> Data
     func requestCardBacks() async throws -> Data
     func getInfo() async throws -> Info
-    func getInfo(handler: @escaping (Result<Info,Error>) -> ()?)
+    func getInfo(handler: @escaping (Result<Info,Error>) -> Void?)
 }
 
 

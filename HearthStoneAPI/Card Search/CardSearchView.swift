@@ -31,13 +31,12 @@ class CardSearchView: UIViewController, TabBarConformant, CardSearchViewProtocol
         return search
     }()
     
-    var cardCollection: CardCollectionComponent = {
-        let cell = CardCollectionCell()
-        cell.identifier = "CardSearchCell"
+    var cardTable: UITableView = {
+        let table = UITableView()
+        table.translatesAutoresizingMaskIntoConstraints = false
+        table.register(SimpleCardCell.self, forCellReuseIdentifier: SimpleCardCell.identifier)
         
-        let collection = CardCollectionComponent(cellConfiguration: cell)
-        
-        return collection
+        return table
     }()
     
     //
@@ -47,10 +46,10 @@ class CardSearchView: UIViewController, TabBarConformant, CardSearchViewProtocol
         super.viewDidLoad()
         
         searchBar.delegate = self
-        cardCollection.delegate = self
-        cardCollection.dataSource = self
+        cardTable.delegate = self
+        cardTable.dataSource = self
         
-        
+        configureLayout()
     }
 
     func updateCurrentData(_ newData: [CardCellData]) {
@@ -63,32 +62,63 @@ class CardSearchView: UIViewController, TabBarConformant, CardSearchViewProtocol
 
 }
 
+extension CardSearchView {
+    
+    func configureLayout(){
+        addSearchConstraints()
+        addTableConstraints()
+        
+    }
+    
+    private func addSearchConstraints(){
+        view.addSubview(searchBar)
+        
+        let constraints = [
+            searchBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            searchBar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            searchBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor)
+        ]
+        
+        NSLayoutConstraint.activate(constraints)
+    }
+    
+    private func addTableConstraints(){
+        view.addSubview(cardTable)
+        
+        let constraints = [
+            cardTable.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            cardTable.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            cardTable.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 16),
+            cardTable.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+        ]
+        
+        NSLayoutConstraint.activate(constraints)
+    }
+    
+    
+}
+
 extension CardSearchView: UISearchBarDelegate{
     
 }
 
-extension CardSearchView: UICollectionViewDelegate{
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //ZOOOO
-    }
+extension CardSearchView: UITableViewDelegate{
+    
 }
 
-extension CardSearchView: UICollectionViewDataSource{
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+extension CardSearchView: UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cardCollection.cellConfiguration?.identifier ?? "", for: indexPath) as! CellConformant
-        
-        struct Temp: CardCellData{
-            var cardImage: UIImage = UIImage(systemName: "pencil")!
-            var cardTitle: String = "Test"
-        }
-        
-        cell.configure(with: Temp())
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: SimpleCardCell.identifier, for: indexPath) as! SimpleCardCell        
         return cell
     }
     
-    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let cardCell = cell as! SimpleCardCell
+        
+        cardCell.configure(withData: nil, cellRow: indexPath.row)
+    }
 }

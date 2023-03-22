@@ -70,7 +70,7 @@ class NativeService: DataProviderService{
         return info
     }
     
-    func getInfo(handler: @escaping (Result<Info,Error>) -> ()?){
+    func getInfo(handler: @escaping (Result<Info,Error>) -> Void?){
         if let globalInfo {
             handler(.success(globalInfo))
         }

@@ -16,4 +16,3 @@ protocol CardCellData{
     var cardImage: UIImage {get}
     var cardTitle: String {get}
 }
-

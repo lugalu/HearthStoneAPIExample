@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CardCollectionCell: UICollectionViewCell, CellConformant{
+class CardBackCell: UICollectionViewCell, CellConformant{
     var identifier: String = ""
     
     func configure(with: CardCellData) {
