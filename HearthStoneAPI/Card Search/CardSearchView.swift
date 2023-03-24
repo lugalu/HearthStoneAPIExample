@@ -119,6 +119,10 @@ extension CardSearchView: UITableViewDataSource{
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let cardCell = cell as! SimpleCardCell
         
-        cardCell.configure(withData: nil, cellRow: indexPath.row)
+        cardCell.configure(withData: nil)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 16
     }
 }

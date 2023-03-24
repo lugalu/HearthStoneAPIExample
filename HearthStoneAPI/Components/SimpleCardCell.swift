@@ -1,159 +1,142 @@
-//
-//  SimpleCardCell.swift
-//  HearthStoneAPI
-//
-//  Created by Lugalu on 21/03/23.
-//
+    //
+    //  SimpleCardCell.swift
+    //  HearthStoneAPI
+    //
+    //  Created by Lugalu on 21/03/23.
+    //
 
-import UIKit
+    import UIKit
 
-class SimpleCardCell: UITableViewCell {
+    class SimpleCardCell: UITableViewCell {
 
-    static let identifier = "SimpleCardCell"
+        static let identifier = "SimpleCardCell"
     
-    //skeleton
-    private var gradientSet: [[CGColor]] = []
-    private let gradient = CAGradientLayer()
-    private var currentGradient: Int = 0
-    private let black = UIColor(red: 0, green: 0, blue: 0, alpha: 1).cgColor
-    private let gray = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.7).cgColor
-    
+        lazy var nameGradient: CAGradientLayer =  CAGradientLayer()
+        lazy var effectGradient: CAGradientLayer = CAGradientLayer()
+        
 
-    let nameLabel: UILabel = {
-        let label = UILabel()
+        let nameLabel: UILabel = {
+            let label = UILabel()
+            
+            label.translatesAutoresizingMaskIntoConstraints = false
+            label.lineBreakMode = .byTruncatingTail
+            label.adjustsFontSizeToFitWidth = false
+            
+            return label
+        }()
         
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.lineBreakMode = .byTruncatingTail
-        label.adjustsFontSizeToFitWidth = false
+        let effectLabel: UILabel = {
+            let label = UILabel()
+            
+            label.translatesAutoresizingMaskIntoConstraints = false
+            label.lineBreakMode = .byTruncatingTail
+            label.adjustsFontSizeToFitWidth = false
+            
+            return label
+        }()
         
-        return label
-    }()
-    
-    let effectLabel: UILabel = {
-        let label = UILabel()
+        let skeletonView:UIView = {
+            let view = UIView()
+            view.translatesAutoresizingMaskIntoConstraints = false
+            
+            return view
+        }()
         
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.lineBreakMode = .byTruncatingTail
-        label.adjustsFontSizeToFitWidth = false
-        
-        return label
-    }()
-    
-    let skeletonView:UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        
-        return view
-    }()
-    
-    func configure(withData card: CardSimplified?, cellRow: Int){
-        if let card{
+        func configure(withData card: CardSimplified? ){
+            setup()
             configureDataConstraints()
-            nameLabel.text = card.name
-            effectLabel.text = card.text ?? ""
-            return
-        }
-        
-        configureSkeleton(cellNumber: cellRow)
-        
-    }
-    
-    
-    private func configureDataConstraints(){
-        skeletonView.removeFromSuperview()
-        
-        addSubview(nameLabel)
-        addSubview(effectLabel)
-        
-        
-        let nameConstraints = [
-            nameLabel.topAnchor.constraint(equalTo: self.topAnchor),
-            nameLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-            nameLabel.leftAnchor.constraint(equalTo: self.leftAnchor),
-            nameLabel.rightAnchor.constraint(equalTo: self.centerXAnchor)
-        ]
-        
-        let effectConstraints = [
-            effectLabel.topAnchor.constraint(equalTo: self.topAnchor),
-            effectLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-            effectLabel.leftAnchor.constraint(equalTo: self.centerXAnchor),
-            effectLabel.rightAnchor.constraint(equalTo: self.rightAnchor)
-        ]
-        
-        NSLayoutConstraint.activate(nameConstraints)
-        NSLayoutConstraint.activate(effectConstraints)
-        
-    }
-    
-    
-    
-    private func configureSkeleton(cellNumber: Int){
-        nameLabel.removeFromSuperview()
-        effectLabel.removeFromSuperview()
-        
-        self.addSubview(skeletonView)
-        
-        let skeletonConstraints = [
-            skeletonView.topAnchor.constraint(equalTo: self.topAnchor),
-            skeletonView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-            skeletonView.leftAnchor.constraint(equalTo: self.leftAnchor),
-            skeletonView.rightAnchor.constraint(equalTo: self.rightAnchor)
-        ]
-        
-        NSLayoutConstraint.activate(skeletonConstraints)
-        
-        createGradient(cellNumber: cellNumber)
-    }
-    
-    private func createGradient(cellNumber: Int){
-        
-        gradientSet.append([gray,black,black,black,black,black,black])
-        gradientSet.append([gray,gray,black,black,black,black,black])
-        gradientSet.append([black,gray,gray,black,black,black,black])
-        gradientSet.append([black,black,gray,gray,black,black,black])
-        gradientSet.append([black,black,black,gray,gray,black,black])
-        gradientSet.append([black,black,black,black,gray,gray,black])
-        gradientSet.append([black,black,black,black,black,gray,gray])
-        
-        gradient.frame = self.bounds
-        gradient.colors = gradientSet[currentGradient]
-        gradient.startPoint = CGPoint(x: 0, y: 0.025)
-        gradient.endPoint = CGPoint(x: 1, y: 0.1)
-        gradient.drawsAsynchronously = true
-        self.layer.addSublayer(gradient)
-
-        DispatchQueue.main.asyncAfter(deadline: .now() + (Double(cellNumber) * 0.125)) {
-            self.animateGradient()
-        }
-        
-    
-        
-    }
-    
-    private func animateGradient(){
-        if currentGradient >= gradientSet.count - 1 {
-            currentGradient = -1
-        }
-        currentGradient += 1
-         
-        let gradientChangeAnimation = CABasicAnimation(keyPath: "color")
-
-        gradientChangeAnimation.duration = 0.3
-        gradientChangeAnimation.toValue = gradientSet[currentGradient]
-        gradientChangeAnimation.fillMode = .forwards
-        gradientChangeAnimation.isRemovedOnCompletion = false
-        gradientChangeAnimation.delegate = self
-        gradientChangeAnimation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
-        gradient.add(gradientChangeAnimation, forKey: "colorChange")
-        
-    }
-}
-
-extension SimpleCardCell: CAAnimationDelegate{
-    func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
-        if flag {
-                gradient.colors = gradientSet[currentGradient]
-                animateGradient()
+            if let card{
+                nameLabel.text = card.name
+                effectLabel.text = card.text ?? " "
+                nameGradient.removeFromSuperlayer()
+                effectGradient.removeFromSuperlayer()
+                return
             }
+        }
+        
+        
+        private func configureDataConstraints(){
+            addSubview(nameLabel)
+            addSubview(effectLabel)
+            
+            
+            let nameConstraints = [
+                nameLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 8),
+                nameLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8),
+                nameLabel.leftAnchor.constraint(equalTo: self.leftAnchor,constant: 16),
+                nameLabel.rightAnchor.constraint(equalTo: self.centerXAnchor)
+            ]
+            
+            let effectConstraints = [
+                effectLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 8),
+                effectLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8),
+                effectLabel.leftAnchor.constraint(equalTo: self.centerXAnchor, constant: 64),
+                effectLabel.rightAnchor.constraint(equalTo: self.rightAnchor,constant: -16)
+            ]
+            
+            NSLayoutConstraint.activate(nameConstraints)
+            NSLayoutConstraint.activate(effectConstraints)
+            
+        }
+        
+            override func layoutSubviews() {
+                super.layoutSubviews()
+                //contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10))
+                
+                nameGradient.frame = nameLabel.bounds
+                nameGradient.cornerRadius = nameLabel.bounds.height/2
+               
+                effectGradient.frame = effectLabel.bounds
+                effectGradient.cornerRadius = effectLabel.bounds.height / 2
+                
+            }
+        
+            func setup() {
+            
+            nameGradient.startPoint = CGPoint(x: 0, y: 0.5)
+            nameGradient.endPoint = CGPoint(x: 1, y: 0.5)
+            nameLabel.layer.addSublayer(nameGradient)
+
+            effectGradient.startPoint = CGPoint(x: 0, y: 0.5)
+            effectGradient.endPoint = CGPoint(x: 1, y: 0.5)
+            effectLabel.layer.addSublayer(effectGradient)
+
+            let titleGroup = makeAnimationGroup()
+            titleGroup.beginTime = 0.0
+            nameGradient.add(titleGroup, forKey: "backgroundColor")
+            
+            let yearGroup = makeAnimationGroup(previousGroup: titleGroup)
+            effectGradient.add(yearGroup, forKey: "backgroundColor")
+        }
+        
+        func makeAnimationGroup(previousGroup: CAAnimationGroup? = nil) -> CAAnimationGroup {
+                let animDuration: CFTimeInterval = 1.5
+                let anim1 = CABasicAnimation(keyPath: #keyPath(CAGradientLayer.backgroundColor))
+                anim1.fromValue = UIColor.lightGray.cgColor
+                anim1.toValue = UIColor.darkGray.cgColor
+                anim1.duration = animDuration
+                anim1.beginTime = 0.0
+
+                let anim2 = CABasicAnimation(keyPath: #keyPath(CAGradientLayer.backgroundColor))
+                anim2.fromValue = UIColor.darkGray.cgColor
+                anim2.toValue = UIColor.lightGray.cgColor
+                anim2.duration = animDuration
+                anim2.beginTime = anim1.beginTime + anim1.duration
+
+                let group = CAAnimationGroup()
+                group.animations = [anim1, anim2]
+                group.repeatCount = .greatestFiniteMagnitude // infinite
+                group.duration = anim2.beginTime + anim2.duration
+                group.isRemovedOnCompletion = false
+
+                if let previousGroup = previousGroup {
+                    // Offset groups by 0.33 seconds for effect
+                    group.beginTime = previousGroup.beginTime + 0.33
+                }
+
+                return group
+            }
+        
+       
+        
     }
-}
