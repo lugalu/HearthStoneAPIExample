@@ -7,12 +7,12 @@
 
 import UIKit
 
-struct CardSimplified: Decodable{
+struct CardSimplified: Decodable, Hashable{
     let name: String
-    let cardSet: String
-    let type: String
-    let text: String?
-    let playerClass: String
+    let cardSet: String?
+    let type: String?
+    var text: String?
+    let playerClass: String?
 }
 
 struct CompleteCard: Decodable{

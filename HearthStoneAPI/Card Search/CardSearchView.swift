@@ -14,13 +14,7 @@ class CardSearchView: UIViewController, TabBarConformant, CardSearchViewProtocol
     
     var filter: String = ""
     
-    private var content: [String] = []
-    
-    var contentAccess: [String]{
-        get{
-            return content.filter({ $0.contains(filter) })
-        }
-    }
+    private var content: [CardSimplified] = []
     
     
     //UI Components
@@ -38,10 +32,6 @@ class CardSearchView: UIViewController, TabBarConformant, CardSearchViewProtocol
         
         return table
     }()
-    
-    //
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -50,10 +40,16 @@ class CardSearchView: UIViewController, TabBarConformant, CardSearchViewProtocol
         cardTable.dataSource = self
         
         configureLayout()
+        
+        presenter?.tryToGetNewData()
     }
 
-    func updateCurrentData(_ newData: [CardCellData]) {
-        
+    func updateCurrentData(_ newData: [CardSimplified]) {
+        print("hey ho")
+        self.content = newData
+        DispatchQueue.main.async {
+            self.cardTable.reloadData()
+        }
     }
     
     func showErrorAlert(_ message: String) {
@@ -103,12 +99,16 @@ extension CardSearchView: UISearchBarDelegate{
 }
 
 extension CardSearchView: UITableViewDelegate{
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if content.count < 1 { return }
+        
+        //go to new Screen
+    }
 }
 
 extension CardSearchView: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return content.count > 0 ? content.count : 10
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -119,7 +119,7 @@ extension CardSearchView: UITableViewDataSource{
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let cardCell = cell as! SimpleCardCell
         
-        cardCell.configure(withData: nil)
+        cardCell.configure(withData: content.count > 0 ? content[indexPath.row] : nil)
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

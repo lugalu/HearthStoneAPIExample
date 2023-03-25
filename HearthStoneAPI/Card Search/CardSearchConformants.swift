@@ -10,7 +10,7 @@ import UIKit
 protocol CardSearchViewProtocol: UIViewController{
     var presenter: CardSearchPresenterProtocol? {get set}
     
-    func updateCurrentData(_ newData: [CardCellData])
+    func updateCurrentData(_ newData: [CardSimplified])
     func showErrorAlert(_ message: String)
 }
 
@@ -28,7 +28,7 @@ protocol CardSearchPresenterProtocol{
     var view: CardSearchViewProtocol? {get set}
     
     func tryToGetNewData()
-    func newCards(_ cards: CardCellData)
+    func newCards(_ cards: [CardSimplified])
     func errorRetrieving(_ errorMessage: String)
 }
 
