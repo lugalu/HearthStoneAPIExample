@@ -14,10 +14,18 @@ class CardSearchView: UIViewController, TabBarConformant, CardSearchViewProtocol
     
     var filter: String = ""
     
-    private var content: [CardSimplified] = []
+    var content: [CardSimplified] = []
     
+    var filteredContent: [CardSimplified]{
+        get{
+            if let text = self.searchBar.text, !text.trimmingCharacters(in: .whitespaces).isEmpty{
+                return content.filter({ $0.name.contains(text)})
+            }
+            
+            return content
+        }
+    }
     
-    //UI Components
     var searchBar: UISearchBar = {
        var search = UISearchBar()
         search.translatesAutoresizingMaskIntoConstraints = false
@@ -29,7 +37,7 @@ class CardSearchView: UIViewController, TabBarConformant, CardSearchViewProtocol
         let table = UITableView()
         table.translatesAutoresizingMaskIntoConstraints = false
         table.register(SimpleCardCell.self, forCellReuseIdentifier: SimpleCardCell.identifier)
-        
+        table.rowHeight = 50
         return table
     }()
     override func viewDidLoad() {
@@ -45,7 +53,6 @@ class CardSearchView: UIViewController, TabBarConformant, CardSearchViewProtocol
     }
 
     func updateCurrentData(_ newData: [CardSimplified]) {
-        print("hey ho")
         self.content = newData
         DispatchQueue.main.async {
             self.cardTable.reloadData()
@@ -94,35 +101,5 @@ extension CardSearchView {
     
 }
 
-extension CardSearchView: UISearchBarDelegate{
-    
-}
 
-extension CardSearchView: UITableViewDelegate{
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if content.count < 1 { return }
-        
-        //go to new Screen
-    }
-}
 
-extension CardSearchView: UITableViewDataSource{
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return content.count > 0 ? content.count : 10
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: SimpleCardCell.identifier, for: indexPath) as! SimpleCardCell        
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        let cardCell = cell as! SimpleCardCell
-        
-        cardCell.configure(withData: content.count > 0 ? content[indexPath.row] : nil)
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 16
-    }
-}

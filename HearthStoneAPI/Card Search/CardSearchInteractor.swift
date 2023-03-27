@@ -34,14 +34,12 @@ class CardSearchInteractor: CardSearchInteractorProtocol{
                 
                 
                 let json = JSONDecoder()
-                print(data)
                 let cards = try json.decode([String: [CardSimplified]].self, from: data)
                 var cardSet: Set<CardSimplified> = Set<CardSimplified>()
                 
                 for (_,value) in cards{
                     cardSet.formUnion(value)
                 }
-                print(cardSet.count)
                 let sortedCards = Array(cardSet).sorted(by: { $0.name < $1.name })
                 presenter?.newCards(sortedCards)
             }catch{
