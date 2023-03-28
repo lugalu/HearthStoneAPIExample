@@ -30,6 +30,7 @@ class CardSearchView: UIViewController, TabBarConformant, CardSearchViewProtocol
         table.rowHeight = 50
         return table
     }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

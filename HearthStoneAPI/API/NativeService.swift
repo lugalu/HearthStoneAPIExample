@@ -111,8 +111,3 @@ extension URLRequest{
 }
 
 
-enum DataErrors: Error{
-    case urlFail
-    case downloadFail
-    case decodeFail
-}

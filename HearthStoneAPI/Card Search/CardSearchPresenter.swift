@@ -40,7 +40,7 @@ class CardSearchPresenter: CardSearchPresenterProtocol{
     }
     
     func errorRetrieving(_ errorMessage: String) {
-        
+        view?.showErrorAlert(errorMessage)
     }
     
     func updateFilter(newFilter: String = "") {
