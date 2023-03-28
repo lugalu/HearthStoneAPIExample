@@ -11,6 +11,18 @@ class CardSearchPresenter: CardSearchPresenterProtocol{
     var interactor: CardSearchInteractorProtocol? = nil
     var view: CardSearchViewProtocol? = nil
     
+    private var content: [CardSimplified] = []
+    var filteredContent: [CardSimplified]{
+        get{
+            if filter.trimmingCharacters(in: .whitespaces).isEmpty{
+                return content
+            }
+            
+            return content.filter({$0.name.contains(filter)})
+        }
+    }
+    var filter: String = ""
+    
     func tryToGetNewData() {
         interactor?.requestCardData()
     }
@@ -18,22 +30,24 @@ class CardSearchPresenter: CardSearchPresenterProtocol{
     func newCards(_ cards: [CardSimplified]) {
         var cardsCopy = cards
         for i in 0..<cards.count {
-            cardsCopy[i].text?.replace("<b>", with: "**")
-            cardsCopy[i].text?.replace("</b>", with: "**")
-            cardsCopy[i].text?.replace("<i>", with: "*")
-            cardsCopy[i].text?.replace("</i>", with: "*")
-            cardsCopy[i].text?.replace("[x]", with: "")
-            cardsCopy[i].text?.replace("[X]", with: "*")
+            cardsCopy[i].text?.translateMarkdown()
         }
     
         cardsCopy.removeAll(where: {$0.name.contains("???")})
         
-        view?.updateCurrentData(cardsCopy)
+        self.content = cardsCopy
+        view?.updateCurrentData()
     }
     
     func errorRetrieving(_ errorMessage: String) {
         
     }
     
+    func updateFilter(newFilter: String = "") {
+        self.filter = newFilter
+        view?.updateCurrentData()
+    }
+    
     
 }
+

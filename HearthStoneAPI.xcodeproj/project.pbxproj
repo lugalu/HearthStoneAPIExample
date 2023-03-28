@@ -26,6 +26,8 @@
 		095DD2BD29CA749A0023A3CD /* SimpleCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095DD2BC29CA749A0023A3CD /* SimpleCardCell.swift */; };
 		096C2EA629BAA5C9006865CF /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096C2EA529BAA5C9006865CF /* TabBar.swift */; };
 		096C2EA929BAA95D006865CF /* APIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096C2EA829BAA95D006865CF /* APIKeys.swift */; };
+		0972407C29D2620E00D10223 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0972407B29D2620E00D10223 /* String.swift */; };
+		0972407E29D265FA00D10223 /* CardSearchView + Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0972407D29D265FA00D10223 /* CardSearchView + Constraints.swift */; };
 		0992891229D10D55004E5A3B /* CardSearchView + DatasourceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0992891129D10D55004E5A3B /* CardSearchView + DatasourceDelegate.swift */; };
 		0992891429D10D73004E5A3B /* CardSearchView + SearchBarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0992891329D10D73004E5A3B /* CardSearchView + SearchBarDelegate.swift */; };
 		09A95C4829C1379E0019C1FC /* AlamoFireService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A95C4729C1379E0019C1FC /* AlamoFireService.swift */; };
@@ -58,6 +60,8 @@
 		095DD2BC29CA749A0023A3CD /* SimpleCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleCardCell.swift; sourceTree = "<group>"; };
 		096C2EA529BAA5C9006865CF /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		096C2EA829BAA95D006865CF /* APIKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeys.swift; sourceTree = "<group>"; };
+		0972407B29D2620E00D10223 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		0972407D29D265FA00D10223 /* CardSearchView + Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CardSearchView + Constraints.swift"; sourceTree = "<group>"; };
 		0992891129D10D55004E5A3B /* CardSearchView + DatasourceDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CardSearchView + DatasourceDelegate.swift"; sourceTree = "<group>"; };
 		0992891329D10D73004E5A3B /* CardSearchView + SearchBarDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CardSearchView + SearchBarDelegate.swift"; sourceTree = "<group>"; };
 		09A95C4729C1379E0019C1FC /* AlamoFireService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamoFireService.swift; sourceTree = "<group>"; };
@@ -99,6 +103,7 @@
 				0914DF2929BE949600E10E50 /* CardSearchPresenter.swift */,
 				0992891129D10D55004E5A3B /* CardSearchView + DatasourceDelegate.swift */,
 				0992891329D10D73004E5A3B /* CardSearchView + SearchBarDelegate.swift */,
+				0972407D29D265FA00D10223 /* CardSearchView + Constraints.swift */,
 			);
 			path = "Card Search";
 			sourceTree = "<group>";
@@ -151,6 +156,7 @@
 		09513C0629BAA0F6004243BD /* HearthStoneAPI */ = {
 			isa = PBXGroup;
 			children = (
+				0972407A29D2620000D10223 /* Extensions */,
 				09A95C4D29C140D20019C1FC /* Models */,
 				094CBDAB29BBF2F40076EE00 /* Components */,
 				094CBDA829BBF2CA0076EE00 /* Protocols */,
@@ -184,6 +190,14 @@
 				096C2EA829BAA95D006865CF /* APIKeys.swift */,
 			);
 			path = API;
+			sourceTree = "<group>";
+		};
+		0972407A29D2620000D10223 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0972407B29D2620E00D10223 /* String.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		09A95C4D29C140D20019C1FC /* Models */ = {
@@ -321,6 +335,7 @@
 			files = (
 				09513C0C29BAA0F6004243BD /* CardSearchView.swift in Sources */,
 				09A95C4C29C140B80019C1FC /* DataProviderService.swift in Sources */,
+				0972407C29D2620E00D10223 /* String.swift in Sources */,
 				09A95C4F29C140DF0019C1FC /* Info.swift in Sources */,
 				0914DF2829BE948900E10E50 /* CardSearchRouter.swift in Sources */,
 				0914DF2429BE922700E10E50 /* CardSearchConformants.swift in Sources */,
@@ -333,6 +348,7 @@
 				09513C0829BAA0F6004243BD /* AppDelegate.swift in Sources */,
 				09513C0A29BAA0F6004243BD /* SceneDelegate.swift in Sources */,
 				0918A75C29BFE76C005F8796 /* CardBackCell.swift in Sources */,
+				0972407E29D265FA00D10223 /* CardSearchView + Constraints.swift in Sources */,
 				0992891229D10D55004E5A3B /* CardSearchView + DatasourceDelegate.swift in Sources */,
 				0992891429D10D73004E5A3B /* CardSearchView + SearchBarDelegate.swift in Sources */,
 				095DD2BB29CA71E10023A3CD /* Cards.swift in Sources */,

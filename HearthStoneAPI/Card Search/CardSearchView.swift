@@ -14,21 +14,11 @@ class CardSearchView: UIViewController, TabBarConformant, CardSearchViewProtocol
     
     var filter: String = ""
     
-    var content: [CardSimplified] = []
-    
-    var filteredContent: [CardSimplified]{
-        get{
-            if let text = self.searchBar.text, !text.trimmingCharacters(in: .whitespaces).isEmpty{
-                return content.filter({ $0.name.contains(text)})
-            }
-            
-            return content
-        }
-    }
-    
     var searchBar: UISearchBar = {
        var search = UISearchBar()
         search.translatesAutoresizingMaskIntoConstraints = false
+        search.returnKeyType = .done
+        search.enablesReturnKeyAutomatically = false
         
         return search
     }()
@@ -48,12 +38,10 @@ class CardSearchView: UIViewController, TabBarConformant, CardSearchViewProtocol
         cardTable.dataSource = self
         
         configureLayout()
-        
         presenter?.tryToGetNewData()
     }
 
-    func updateCurrentData(_ newData: [CardSimplified]) {
-        self.content = newData
+    func updateCurrentData() {
         DispatchQueue.main.async {
             self.cardTable.reloadData()
         }
@@ -65,41 +53,6 @@ class CardSearchView: UIViewController, TabBarConformant, CardSearchViewProtocol
 
 }
 
-extension CardSearchView {
-    
-    func configureLayout(){
-        addSearchConstraints()
-        addTableConstraints()
-        
-    }
-    
-    private func addSearchConstraints(){
-        view.addSubview(searchBar)
-        
-        let constraints = [
-            searchBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            searchBar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            searchBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor)
-        ]
-        
-        NSLayoutConstraint.activate(constraints)
-    }
-    
-    private func addTableConstraints(){
-        view.addSubview(cardTable)
-        
-        let constraints = [
-            cardTable.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            cardTable.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            cardTable.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 16),
-            cardTable.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
-        ]
-        
-        NSLayoutConstraint.activate(constraints)
-    }
-    
-    
-}
 
 
 

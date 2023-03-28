@@ -9,7 +9,7 @@ import UIKit
 
 extension CardSearchView: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if content.count < 1 { return }
+        if let presenter, presenter.filteredContent.count < 1 { return }
         
         //go to new Screen
     }
@@ -19,8 +19,8 @@ extension CardSearchView: UITableViewDelegate{
 
 extension CardSearchView: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
-        return filteredContent.count > 0 ? filteredContent.count : 10
+        guard let presenter else { return 10 }
+        return presenter.filteredContent.count > 0 ? presenter.filteredContent.count : 10
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -29,12 +29,9 @@ extension CardSearchView: UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        let cardCell = cell as! SimpleCardCell
-        
-        cardCell.configure(withData: filteredContent.count > 0 ? filteredContent[indexPath.row] : nil)
+        let cardCell = cell as? SimpleCardCell
+        guard let presenter else { return }
+        cardCell?.configure(withData: presenter.filteredContent.count > 0 ? presenter.filteredContent[indexPath.row] : nil)
     }
     
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 16
-    }
 }

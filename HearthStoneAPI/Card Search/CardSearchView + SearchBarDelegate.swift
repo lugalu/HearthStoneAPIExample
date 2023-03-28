@@ -9,7 +9,7 @@ import UIKit
 
 extension CardSearchView: UISearchBarDelegate{
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        self.cardTable.reloadData()
+        self.presenter?.updateFilter(newFilter: searchText)
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
