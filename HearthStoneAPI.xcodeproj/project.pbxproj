@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0914DF2229BE919A00E10E50 /* CardCellProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0914DF2129BE919A00E10E50 /* CardCellProtocols.swift */; };
+		0914DF2229BE919A00E10E50 /* Skeletonable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0914DF2129BE919A00E10E50 /* Skeletonable.swift */; };
 		0914DF2429BE922700E10E50 /* CardSearchConformants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0914DF2329BE922700E10E50 /* CardSearchConformants.swift */; };
 		0914DF2629BE947A00E10E50 /* CardSearchInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0914DF2529BE947A00E10E50 /* CardSearchInteractor.swift */; };
 		0914DF2829BE948900E10E50 /* CardSearchRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0914DF2729BE948900E10E50 /* CardSearchRouter.swift */; };
@@ -29,6 +29,10 @@
 		0972407C29D2620E00D10223 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0972407B29D2620E00D10223 /* String.swift */; };
 		0972407E29D265FA00D10223 /* CardSearchView + Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0972407D29D265FA00D10223 /* CardSearchView + Constraints.swift */; };
 		0972408029D2690300D10223 /* APIErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0972407F29D2690300D10223 /* APIErrors.swift */; };
+		0985072329D3B70900063E55 /* CardBackConformants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0985072229D3B70900063E55 /* CardBackConformants.swift */; };
+		0985072529D3B89200063E55 /* CardBackInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0985072429D3B89200063E55 /* CardBackInteractor.swift */; };
+		0985072729D3B89A00063E55 /* CardBackRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0985072629D3B89A00063E55 /* CardBackRouter.swift */; };
+		0985072929D3B8A700063E55 /* CardBackPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0985072829D3B8A700063E55 /* CardBackPresenter.swift */; };
 		0992891229D10D55004E5A3B /* CardSearchView + DatasourceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0992891129D10D55004E5A3B /* CardSearchView + DatasourceDelegate.swift */; };
 		0992891429D10D73004E5A3B /* CardSearchView + SearchBarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0992891329D10D73004E5A3B /* CardSearchView + SearchBarDelegate.swift */; };
 		09A95C4829C1379E0019C1FC /* AlamoFireService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A95C4729C1379E0019C1FC /* AlamoFireService.swift */; };
@@ -40,7 +44,7 @@
 
 /* Begin PBXFileReference section */
 		02C83017823898075BEFE139 /* Pods_HearthStoneAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HearthStoneAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		0914DF2129BE919A00E10E50 /* CardCellProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCellProtocols.swift; sourceTree = "<group>"; };
+		0914DF2129BE919A00E10E50 /* Skeletonable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Skeletonable.swift; sourceTree = "<group>"; };
 		0914DF2329BE922700E10E50 /* CardSearchConformants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSearchConformants.swift; sourceTree = "<group>"; };
 		0914DF2529BE947A00E10E50 /* CardSearchInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSearchInteractor.swift; sourceTree = "<group>"; };
 		0914DF2729BE948900E10E50 /* CardSearchRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSearchRouter.swift; sourceTree = "<group>"; };
@@ -64,6 +68,10 @@
 		0972407B29D2620E00D10223 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		0972407D29D265FA00D10223 /* CardSearchView + Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CardSearchView + Constraints.swift"; sourceTree = "<group>"; };
 		0972407F29D2690300D10223 /* APIErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIErrors.swift; sourceTree = "<group>"; };
+		0985072229D3B70900063E55 /* CardBackConformants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBackConformants.swift; sourceTree = "<group>"; };
+		0985072429D3B89200063E55 /* CardBackInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBackInteractor.swift; sourceTree = "<group>"; };
+		0985072629D3B89A00063E55 /* CardBackRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBackRouter.swift; sourceTree = "<group>"; };
+		0985072829D3B8A700063E55 /* CardBackPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBackPresenter.swift; sourceTree = "<group>"; };
 		0992891129D10D55004E5A3B /* CardSearchView + DatasourceDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CardSearchView + DatasourceDelegate.swift"; sourceTree = "<group>"; };
 		0992891329D10D73004E5A3B /* CardSearchView + SearchBarDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CardSearchView + SearchBarDelegate.swift"; sourceTree = "<group>"; };
 		09A95C4729C1379E0019C1FC /* AlamoFireService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamoFireService.swift; sourceTree = "<group>"; };
@@ -114,6 +122,10 @@
 			isa = PBXGroup;
 			children = (
 				094CBDA629BBF01B0076EE00 /* CardBackView.swift */,
+				0985072229D3B70900063E55 /* CardBackConformants.swift */,
+				0985072429D3B89200063E55 /* CardBackInteractor.swift */,
+				0985072629D3B89A00063E55 /* CardBackRouter.swift */,
+				0985072829D3B8A700063E55 /* CardBackPresenter.swift */,
 			);
 			path = "Card Back Search";
 			sourceTree = "<group>";
@@ -122,7 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				094CBDA929BBF2DA0076EE00 /* TabBarConformant.swift */,
-				0914DF2129BE919A00E10E50 /* CardCellProtocols.swift */,
+				0914DF2129BE919A00E10E50 /* Skeletonable.swift */,
 				09A95C4B29C140B80019C1FC /* DataProviderService.swift */,
 			);
 			path = Protocols;
@@ -343,6 +355,7 @@
 				0914DF2829BE948900E10E50 /* CardSearchRouter.swift in Sources */,
 				0914DF2429BE922700E10E50 /* CardSearchConformants.swift in Sources */,
 				0914DF2A29BE949600E10E50 /* CardSearchPresenter.swift in Sources */,
+				0985072329D3B70900063E55 /* CardBackConformants.swift in Sources */,
 				095DD2B929CA6FFA0023A3CD /* CardBack.swift in Sources */,
 				096C2EA929BAA95D006865CF /* APIKeys.swift in Sources */,
 				09A95C4A29C137B70019C1FC /* NativeService.swift in Sources */,
@@ -350,17 +363,20 @@
 				0914DF2629BE947A00E10E50 /* CardSearchInteractor.swift in Sources */,
 				09A95C4829C1379E0019C1FC /* AlamoFireService.swift in Sources */,
 				09513C0829BAA0F6004243BD /* AppDelegate.swift in Sources */,
+				0985072729D3B89A00063E55 /* CardBackRouter.swift in Sources */,
 				09513C0A29BAA0F6004243BD /* SceneDelegate.swift in Sources */,
 				0918A75C29BFE76C005F8796 /* CardBackCell.swift in Sources */,
 				0972407E29D265FA00D10223 /* CardSearchView + Constraints.swift in Sources */,
 				0992891229D10D55004E5A3B /* CardSearchView + DatasourceDelegate.swift in Sources */,
+				0985072929D3B8A700063E55 /* CardBackPresenter.swift in Sources */,
 				0992891429D10D73004E5A3B /* CardSearchView + SearchBarDelegate.swift in Sources */,
 				095DD2BB29CA71E10023A3CD /* Cards.swift in Sources */,
 				095DD2BD29CA749A0023A3CD /* SimpleCardCell.swift in Sources */,
 				096C2EA629BAA5C9006865CF /* TabBar.swift in Sources */,
 				094CBDAA29BBF2DA0076EE00 /* TabBarConformant.swift in Sources */,
-				0914DF2229BE919A00E10E50 /* CardCellProtocols.swift in Sources */,
+				0914DF2229BE919A00E10E50 /* Skeletonable.swift in Sources */,
 				094CBDA729BBF01B0076EE00 /* CardBackView.swift in Sources */,
+				0985072529D3B89200063E55 /* CardBackInteractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

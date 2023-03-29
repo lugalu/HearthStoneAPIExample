@@ -11,6 +11,7 @@ class CardSearchPresenter: CardSearchPresenterProtocol{
     var interactor: CardSearchInteractorProtocol? = nil
     var view: CardSearchViewProtocol? = nil
     
+    var filter: String = ""
     private var content: [CardSimplified] = []
     var filteredContent: [CardSimplified]{
         get{
@@ -21,7 +22,7 @@ class CardSearchPresenter: CardSearchPresenterProtocol{
             return content.filter({$0.name.contains(filter)})
         }
     }
-    var filter: String = ""
+    
     
     func tryToGetNewData() {
         interactor?.requestCardData()
@@ -47,7 +48,6 @@ class CardSearchPresenter: CardSearchPresenterProtocol{
         self.filter = newFilter
         view?.updateCurrentData()
     }
-    
     
 }
 

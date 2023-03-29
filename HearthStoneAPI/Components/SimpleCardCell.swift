@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SimpleCardCell: UITableViewCell {
+class SimpleCardCell: UITableViewCell, Skeletonable {
     
     static let identifier = "SimpleCardCell"
     
@@ -33,13 +33,6 @@ class SimpleCardCell: UITableViewCell {
         label.adjustsFontSizeToFitWidth = false
         
         return label
-    }()
-    
-    let skeletonView:UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        
-        return view
     }()
     
     func configure(withData card: CardSimplified? ) {
@@ -87,7 +80,6 @@ class SimpleCardCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        //contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10))
         
         nameGradient.frame = nameLabel.bounds
         nameGradient.cornerRadius = nameLabel.bounds.height/2
@@ -115,33 +107,7 @@ class SimpleCardCell: UITableViewCell {
         effectGradient.add(yearGroup, forKey: "backgroundColor")
     }
     
-    func makeAnimationGroup(previousGroup: CAAnimationGroup? = nil) -> CAAnimationGroup {
-        let animDuration: CFTimeInterval = 1.5
-        let anim1 = CABasicAnimation(keyPath: #keyPath(CAGradientLayer.backgroundColor))
-        anim1.fromValue = UIColor.lightGray.cgColor
-        anim1.toValue = UIColor.darkGray.cgColor
-        anim1.duration = animDuration
-        anim1.beginTime = 0.0
-        
-        let anim2 = CABasicAnimation(keyPath: #keyPath(CAGradientLayer.backgroundColor))
-        anim2.fromValue = UIColor.darkGray.cgColor
-        anim2.toValue = UIColor.lightGray.cgColor
-        anim2.duration = animDuration
-        anim2.beginTime = anim1.beginTime + anim1.duration
-        
-        let group = CAAnimationGroup()
-        group.animations = [anim1, anim2]
-        group.repeatCount = .greatestFiniteMagnitude // infinite
-        group.duration = anim2.beginTime + anim2.duration
-        group.isRemovedOnCompletion = false
-        
-        if let previousGroup = previousGroup {
-            // Offset groups by 0.33 seconds for effect
-            group.beginTime = previousGroup.beginTime + 0.33
-        }
-        
-        return group
-    }
+
     
     override func prepareForReuse() {
         super.prepareForReuse()
@@ -152,3 +118,6 @@ class SimpleCardCell: UITableViewCell {
     
     
 }
+
+
+
