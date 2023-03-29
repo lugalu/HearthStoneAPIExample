@@ -16,19 +16,22 @@ class CardBackCell: UICollectionViewCell, Skeletonable{
     var imageView: UIImageView = {
         let view = UIImageView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        
+        view.image = UIImage(systemName: "pencil")
+        view.contentMode = .scaleAspectFit
         return view
     }()
     
     var nameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        
+        label.text = " "
         return label
     }()
     
     func configure(_ cardBack: CardBack? = nil){
+        setup()
         configureConstraints()
+        
         if let cardBack {
             nameLabel.text = cardBack.name
             imageView.image = cardBack.image
@@ -37,8 +40,8 @@ class CardBackCell: UICollectionViewCell, Skeletonable{
             nameGradient.removeFromSuperlayer()
             return
         }
+        
     }
-    
 
     
 }
@@ -46,15 +49,8 @@ class CardBackCell: UICollectionViewCell, Skeletonable{
 extension CardBackCell{
     
     func configureConstraints(){
-        addSubview(nameLabel)
-
-        let nameConstraints = [
-            nameLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 8),
-            nameLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8),
-            nameLabel.centerXAnchor.constraint(equalTo: imageView.centerXAnchor)
-        ]
-        
-        NSLayoutConstraint.activate(nameConstraints)
+        configureImageConstraints()
+        configureNameLabelConstraints()
     }
     
     
@@ -62,12 +58,25 @@ extension CardBackCell{
         addSubview(imageView)
         
         let imageConstraints = [
-            imageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 8),
-            imageView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 16),
-            imageView.rightAnchor.constraint(equalTo: self.rightAnchor,constant: -16)
+            imageView.topAnchor.constraint(equalTo: self.topAnchor),
+            imageView.leftAnchor.constraint(equalTo: self.leftAnchor),
+            imageView.rightAnchor.constraint(equalTo: self.rightAnchor)
         ]
         
         NSLayoutConstraint.activate(imageConstraints)
+    }
+    
+    private func configureNameLabelConstraints() {
+        addSubview(nameLabel)
+
+        let nameConstraints = [
+            nameLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 8),
+            nameLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8),
+            nameLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 16),
+            nameLabel.rightAnchor.constraint(equalTo: self.rightAnchor,constant: -16),
+        ]
+        
+        NSLayoutConstraint.activate(nameConstraints)
     }
     
     func setup() {
@@ -95,9 +104,7 @@ extension CardBackCell{
         nameGradient.cornerRadius = nameLabel.bounds.height/2
         
         imageGradient.frame = imageView.bounds
-        imageGradient.cornerRadius = imageView.bounds.height / 2
-        imageView.layer.cornerRadius = imageView.bounds.height / 2
-        
+        imageGradient.cornerRadius = 5
     }
     
     override func prepareForReuse() {

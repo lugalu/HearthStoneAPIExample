@@ -15,7 +15,10 @@ class CardBackView: UIViewController, CardBackViewProtocol, TabBarConformant {
     
     var cardBackCollection: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: 200, height: 400)
+        layout.itemSize = CGSize(width: 170, height: 270)
+        layout.sectionInset = UIEdgeInsets(top: 16, left: 16, bottom: 0, right: 16)
+        layout.minimumInteritemSpacing = 2
+        layout.minimumLineSpacing = 15
         
         var collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -27,6 +30,8 @@ class CardBackView: UIViewController, CardBackViewProtocol, TabBarConformant {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        cardBackCollection.delegate = self
+        cardBackCollection.dataSource = self
         configureConstraints()
     }
     
@@ -72,6 +77,7 @@ extension CardBackView: UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CardBackCell.identifier, for: indexPath) as! CardBackCell
+        cell.configure()
         return cell
     }
     
