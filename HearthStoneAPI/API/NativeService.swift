@@ -8,6 +8,8 @@
 import Foundation
 
 class NativeService: DataProviderService{
+
+    
     private var internalInfo: Info? = nil
     var globalInfo: Info?{
         get{
@@ -46,6 +48,13 @@ class NativeService: DataProviderService{
     func requestCardBacks() async throws -> Data {
         guard let url = URL(string: APIKeys.API_ENDPOINT+"cardbacks") else { throw DataErrors.urlFail }
         
+        let request = URLRequest(apiUrl: url)
+        let (data, _) = try await URLSession.shared.data(for: request)
+        
+        return data
+    }
+    
+    func downloadImage(_ url: URL) async throws -> Data {
         let request = URLRequest(apiUrl: url)
         let (data, _) = try await URLSession.shared.data(for: request)
         

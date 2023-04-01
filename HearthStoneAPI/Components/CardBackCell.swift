@@ -17,7 +17,6 @@ class CardBackCell: UICollectionViewCell, Skeletonable{
         let view = UIImageView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.image = UIImage(systemName: "pencil")
-        view.contentMode = .scaleAspectFit
         return view
     }()
     
@@ -25,6 +24,8 @@ class CardBackCell: UICollectionViewCell, Skeletonable{
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = " "
+        label.textAlignment = .center
+        label.adjustsFontSizeToFitWidth = true
         return label
     }()
     
@@ -34,7 +35,9 @@ class CardBackCell: UICollectionViewCell, Skeletonable{
         
         if let cardBack {
             nameLabel.text = cardBack.name
-            imageView.image = cardBack.image
+            imageView.image = cardBack.image ?? cardBack.animatedImage ?? UIImage(systemName: "x.square")!
+            imageView.contentMode = .scaleAspectFit
+            imageView.clipsToBounds = true
             
             imageGradient.removeFromSuperlayer()
             nameGradient.removeFromSuperlayer()
@@ -60,6 +63,7 @@ extension CardBackCell{
         let imageConstraints = [
             imageView.topAnchor.constraint(equalTo: self.topAnchor),
             imageView.leftAnchor.constraint(equalTo: self.leftAnchor),
+            imageView.heightAnchor.constraint(lessThanOrEqualToConstant: 233),
             imageView.rightAnchor.constraint(equalTo: self.rightAnchor)
         ]
         
@@ -102,7 +106,6 @@ extension CardBackCell{
         
         nameGradient.frame = nameLabel.bounds
         nameGradient.cornerRadius = nameLabel.bounds.height/2
-        
         imageGradient.frame = imageView.bounds
         imageGradient.cornerRadius = 5
     }

@@ -9,6 +9,7 @@ import Alamofire
 import SwiftyJSON
 
 class AlamoFireService: DataProviderService{
+    
     private var internalInfo: Info? = nil
     var globalInfo: Info?{
         get{
@@ -45,6 +46,10 @@ class AlamoFireService: DataProviderService{
     }
     
     func requestCardBacks() async throws -> Data {
+        return Data()
+    }
+    
+    func downloadImage(_ url: URL) async throws -> Data {
         return Data()
     }
     

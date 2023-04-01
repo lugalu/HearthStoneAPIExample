@@ -29,6 +29,7 @@ protocol CardBackPresenterProtocol{
 
     func tryToGetNewData()
     func newCards(_ cards: [CardBack])
+    func appendCardBack(_ card: CardBack)
     func errorRetrieving(_ errorMessage: String)
     func updateFilter(newFilter: String)
 }

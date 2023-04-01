@@ -19,9 +19,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: windowScene)
         
         let cardSearch = CardSearchRouter.getView()!
-        //let cardBack = CardBackRouter TODO: finish and change this.
+        let cardBack = CardBackRouter.getView()!
         
-        window.rootViewController = TabBar(cardSearch, CardBackView())
+        window.rootViewController = TabBar(cardSearch, cardBack)
         
         self.window = window
         window.makeKeyAndVisible()

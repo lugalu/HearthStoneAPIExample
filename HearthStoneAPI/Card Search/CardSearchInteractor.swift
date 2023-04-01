@@ -17,8 +17,8 @@ class CardSearchInteractor: CardSearchInteractorProtocol{
         self.service = service
         Task{
             do{
-                let info = try await self.service.getInfo()
-                self.service.globalInfo = info
+              //  let info = try await self.service.getInfo()
+              //  self.service.globalInfo = info
             }catch{
                 print("Error in init \(error.localizedDescription)")
             }

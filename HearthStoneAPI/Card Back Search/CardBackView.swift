@@ -33,6 +33,7 @@ class CardBackView: UIViewController, CardBackViewProtocol, TabBarConformant {
         cardBackCollection.delegate = self
         cardBackCollection.dataSource = self
         configureConstraints()
+        presenter?.tryToGetNewData()
     }
     
     func updateCurrentData() {
@@ -72,18 +73,19 @@ extension CardBackView: UICollectionViewDelegate{
 
 extension CardBackView: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        guard let presenter else { return 10}
+        return presenter.content.count > 0 ? presenter.content.count : 10
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CardBackCell.identifier, for: indexPath) as! CardBackCell
-        cell.configure()
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         let cardCell = cell as! CardBackCell
-        cardCell.configure()
+        guard let presenter else { return }
+        cardCell.configure(presenter.content.count > 0 ? presenter.content[indexPath.row] : nil)
         
     }
     
