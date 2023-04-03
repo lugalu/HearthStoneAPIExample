@@ -46,6 +46,7 @@ class CardSearchInteractor: CardSearchInteractorProtocol{
     }
     
     func failedToRetrieve(_ error: Error) {
+        print("failed \(error.localizedDescription)")
         presenter?.errorRetrieving(error.localizedDescription)
     }
     

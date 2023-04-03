@@ -8,7 +8,7 @@
 import UIKit
 
 struct CardSimplified: Decodable, Hashable{
-    let cardID: String
+    let cardId: String
     let name: String
     let cardSet: String?
     let type: String?

@@ -19,7 +19,7 @@ class CardDetailsPresenter: CardDetailsPresenterProtocol{
     }
     
     func requestCard() {
-        interactor?.requestCard(withID: card.cardID)
+        interactor?.requestCard(withID: card.cardId)
     }
     
     func cardRequested(_ card: CompleteCard) {
