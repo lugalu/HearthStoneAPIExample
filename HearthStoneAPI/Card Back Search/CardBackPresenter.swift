@@ -36,9 +36,5 @@ class CardBackPresenter: CardBackPresenterProtocol{
         
     }
     
-    func updateFilter(newFilter: String) {
-        
-    }
-    
     
 }

@@ -15,7 +15,7 @@ protocol CardBackViewProtocol: UIViewController{
 
 protocol CardBackInteractorProtocol{
     var presenter: CardBackPresenterProtocol? {get set}
-    var service: DataProviderService {get set}
+    var service:  (CardBacksService & CommonDataService) {get set}
 
     func requestCardData()
     func dataRetrieved(_ data: Data)
@@ -31,7 +31,6 @@ protocol CardBackPresenterProtocol{
     func newCards(_ cards: [CardBack])
     func appendCardBack(_ card: CardBack)
     func errorRetrieving(_ errorMessage: String)
-    func updateFilter(newFilter: String)
 }
 
 protocol CardBackRouterProtocol{

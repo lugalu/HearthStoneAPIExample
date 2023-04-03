@@ -16,7 +16,7 @@ protocol CardSearchViewProtocol: UIViewController{
 
 protocol CardSearchInteractorProtocol{
     var presenter: CardSearchPresenterProtocol? {get set}
-    var service: DataProviderService {get set}
+    var service: (SimpleCardsService & CommonDataService) {get set}
     
     func requestCardData()
     func dataRetrieved(_ data: Data)
@@ -36,12 +36,6 @@ protocol CardSearchPresenterProtocol{
 
 protocol CardSearchRouterProtocol{
     static func getView() -> (CardSearchViewProtocol & TabBarConformant)?
-    static func getCardDetails() -> CardDetailsViewProtocol?
-    static func getConfigurationView()
-}
-
-protocol CardDetailsViewProtocol{
-    
 }
 
 

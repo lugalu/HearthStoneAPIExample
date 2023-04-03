@@ -17,24 +17,6 @@ class CardSearchRouter: CardSearchRouterProtocol{
         presenter.view = view
         presenter.interactor = interactor
         
-    
-        
         return view
     }
-    
-    static func getCardDetails() -> CardDetailsViewProtocol? {
-        //TODO: Elaborate this
-        return Temp()
-    }
-    
-    static func getConfigurationView() {
-        //TODO: MAke this
-    }
-    
-    
-}
-
-
-class Temp: CardDetailsViewProtocol{
-    
 }

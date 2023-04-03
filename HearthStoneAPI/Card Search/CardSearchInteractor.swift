@@ -10,21 +10,11 @@ import UIKit
 class CardSearchInteractor: CardSearchInteractorProtocol{
     var presenter: CardSearchPresenterProtocol?
     
-    var service: DataProviderService
+    var service: (SimpleCardsService & CommonDataService)
     
-    init(presenter: CardSearchPresenterProtocol, service: DataProviderService = NativeService()){
+    init(presenter: CardSearchPresenterProtocol, service:  (SimpleCardsService & CommonDataService) = NativeService()){
         self.presenter = presenter
         self.service = service
-        Task{
-            do{
-              //  let info = try await self.service.getInfo()
-              //  self.service.globalInfo = info
-            }catch{
-                print("Error in init \(error.localizedDescription)")
-            }
-            
-        }
-        
     }
     
     func requestCardData() {

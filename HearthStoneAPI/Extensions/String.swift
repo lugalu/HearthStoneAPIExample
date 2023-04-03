@@ -21,7 +21,7 @@ extension String{
     
     mutating func translateMarkdown(){
         for (key,value) in markdownDict{
-            var endKey = key.replacingOccurrences(of: "<", with: "</")
+            let endKey = key.replacingOccurrences(of: "<", with: "</")
             self.replace(key, with: value)
             self.replace(endKey, with: value)
         }

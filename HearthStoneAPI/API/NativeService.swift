@@ -10,6 +10,8 @@ import Foundation
 class NativeService: DataProviderService{
 
     
+
+    
     private var internalInfo: Info? = nil
     var globalInfo: Info?{
         get{
@@ -61,50 +63,8 @@ class NativeService: DataProviderService{
         return data
     }
     
-    func getInfo() async throws -> Info {
-        if let globalInfo {
-            return globalInfo
-        }
-        
-        guard let url = URL(string: APIKeys.API_ENDPOINT+"info") else { throw DataErrors.urlFail }
-        
-        let request = URLRequest(apiUrl: url)
-        let (data, response) = try await URLSession.shared.data(for: request)
-    
-        let json = JSONDecoder()
-        let info = try json.decode(Info.self, from: data)
-        
-        
-        globalInfo = info
-        return info
-    }
-    
-    func getInfo(handler: @escaping (Result<Info,Error>) -> Void?){
-        if let globalInfo {
-            handler(.success(globalInfo))
-        }
-        guard let url = URL(string: APIKeys.API_ENDPOINT+"info") else {
-            handler(.failure(DataErrors.urlFail))
-            return
-        }
-        let request = URLRequest(apiUrl: url)
-        
-        URLSession.shared.dataTask(with: request, completionHandler: { data, _, error in
-            if let error, data == nil{
-                handler(.failure(error))
-            }
-            
-            do{
-                let info = try JSONDecoder().decode(Info.self, from: data!) as Info
-                self.globalInfo = info
-                handler(.success(info))
-                
-            }catch{
-                handler(.failure(DataErrors.decodeFail))
-            }
-            
-        })
-    
+    func requestCompleteCard(withID id: String) async throws -> Data {
+        return Data()
     }
     
 }

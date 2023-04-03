@@ -10,9 +10,9 @@ import UIKit
 class CardBackInteractor: CardBackInteractorProtocol{
     var presenter: CardBackPresenterProtocol? = nil
     
-    var service: DataProviderService
+    var service: (CardBacksService & CommonDataService)
       
-    init(service: DataProviderService = NativeService()) {
+    init(service: (CardBacksService & CommonDataService) = NativeService()) {
         self.service = service
     }
     

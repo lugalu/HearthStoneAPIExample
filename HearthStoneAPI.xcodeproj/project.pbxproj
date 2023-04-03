@@ -39,6 +39,12 @@
 		09A95C4A29C137B70019C1FC /* NativeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A95C4929C137B70019C1FC /* NativeService.swift */; };
 		09A95C4C29C140B80019C1FC /* DataProviderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A95C4B29C140B80019C1FC /* DataProviderService.swift */; };
 		09A95C4F29C140DF0019C1FC /* Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A95C4E29C140DF0019C1FC /* Info.swift */; };
+		09B1D5A829DA472A003B2B58 /* Collections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B1D5A729DA472A003B2B58 /* Collections.swift */; };
+		09B1D5AB29DA4CAD003B2B58 /* CardDetailsConformants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B1D5AA29DA4CAD003B2B58 /* CardDetailsConformants.swift */; };
+		09B1D5AD29DA53FA003B2B58 /* CardDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B1D5AC29DA53FA003B2B58 /* CardDetailsView.swift */; };
+		09B1D5AF29DA54E0003B2B58 /* CardDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B1D5AE29DA54E0003B2B58 /* CardDetailsPresenter.swift */; };
+		09B1D5B129DA560E003B2B58 /* CardDetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B1D5B029DA560E003B2B58 /* CardDetailsInteractor.swift */; };
+		09B1D5B329DA57DF003B2B58 /* CardDetailsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B1D5B229DA57DF003B2B58 /* CardDetailsRouter.swift */; };
 		4B666CA3EDA285D103D53C20 /* Pods_HearthStoneAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02C83017823898075BEFE139 /* Pods_HearthStoneAPI.framework */; };
 /* End PBXBuildFile section */
 
@@ -78,6 +84,12 @@
 		09A95C4929C137B70019C1FC /* NativeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeService.swift; sourceTree = "<group>"; };
 		09A95C4B29C140B80019C1FC /* DataProviderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProviderService.swift; sourceTree = "<group>"; };
 		09A95C4E29C140DF0019C1FC /* Info.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Info.swift; sourceTree = "<group>"; };
+		09B1D5A729DA472A003B2B58 /* Collections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collections.swift; sourceTree = "<group>"; };
+		09B1D5AA29DA4CAD003B2B58 /* CardDetailsConformants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailsConformants.swift; sourceTree = "<group>"; };
+		09B1D5AC29DA53FA003B2B58 /* CardDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailsView.swift; sourceTree = "<group>"; };
+		09B1D5AE29DA54E0003B2B58 /* CardDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailsPresenter.swift; sourceTree = "<group>"; };
+		09B1D5B029DA560E003B2B58 /* CardDetailsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailsInteractor.swift; sourceTree = "<group>"; };
+		09B1D5B229DA57DF003B2B58 /* CardDetailsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailsRouter.swift; sourceTree = "<group>"; };
 		501BCD7A259C0145945EC0AA /* Pods-HearthStoneAPI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HearthStoneAPI.debug.xcconfig"; path = "Target Support Files/Pods-HearthStoneAPI/Pods-HearthStoneAPI.debug.xcconfig"; sourceTree = "<group>"; };
 		BB7149271998CEF2D5A50279 /* Pods-HearthStoneAPI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HearthStoneAPI.release.xcconfig"; path = "Target Support Files/Pods-HearthStoneAPI/Pods-HearthStoneAPI.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -176,6 +188,7 @@
 				094CBDA829BBF2CA0076EE00 /* Protocols */,
 				094CBDA529BBEEFA0076EE00 /* Card Back Search */,
 				094CBDA429BBEEEE0076EE00 /* Card Search */,
+				09B1D5A929DA4C85003B2B58 /* CardDetails */,
 				096C2EA729BAA94D006865CF /* API */,
 				096C2EA429BAA5BB006865CF /* TabBar */,
 				09513C0729BAA0F6004243BD /* AppDelegate.swift */,
@@ -211,6 +224,7 @@
 			isa = PBXGroup;
 			children = (
 				0972407B29D2620E00D10223 /* String.swift */,
+				09B1D5A729DA472A003B2B58 /* Collections.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -223,6 +237,18 @@
 				095DD2BA29CA71E10023A3CD /* Cards.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		09B1D5A929DA4C85003B2B58 /* CardDetails */ = {
+			isa = PBXGroup;
+			children = (
+				09B1D5AA29DA4CAD003B2B58 /* CardDetailsConformants.swift */,
+				09B1D5AC29DA53FA003B2B58 /* CardDetailsView.swift */,
+				09B1D5AE29DA54E0003B2B58 /* CardDetailsPresenter.swift */,
+				09B1D5B029DA560E003B2B58 /* CardDetailsInteractor.swift */,
+				09B1D5B229DA57DF003B2B58 /* CardDetailsRouter.swift */,
+			);
+			path = CardDetails;
 			sourceTree = "<group>";
 		};
 		3693F37BD7D594A674446DCC /* Frameworks */ = {
@@ -350,6 +376,7 @@
 			files = (
 				09513C0C29BAA0F6004243BD /* CardSearchView.swift in Sources */,
 				09A95C4C29C140B80019C1FC /* DataProviderService.swift in Sources */,
+				09B1D5AF29DA54E0003B2B58 /* CardDetailsPresenter.swift in Sources */,
 				0972407C29D2620E00D10223 /* String.swift in Sources */,
 				09A95C4F29C140DF0019C1FC /* Info.swift in Sources */,
 				0914DF2829BE948900E10E50 /* CardSearchRouter.swift in Sources */,
@@ -357,18 +384,23 @@
 				0914DF2A29BE949600E10E50 /* CardSearchPresenter.swift in Sources */,
 				0985072329D3B70900063E55 /* CardBackConformants.swift in Sources */,
 				095DD2B929CA6FFA0023A3CD /* CardBack.swift in Sources */,
+				09B1D5A829DA472A003B2B58 /* Collections.swift in Sources */,
 				096C2EA929BAA95D006865CF /* APIKeys.swift in Sources */,
+				09B1D5AD29DA53FA003B2B58 /* CardDetailsView.swift in Sources */,
+				09B1D5AB29DA4CAD003B2B58 /* CardDetailsConformants.swift in Sources */,
 				09A95C4A29C137B70019C1FC /* NativeService.swift in Sources */,
 				0972408029D2690300D10223 /* APIErrors.swift in Sources */,
 				0914DF2629BE947A00E10E50 /* CardSearchInteractor.swift in Sources */,
 				09A95C4829C1379E0019C1FC /* AlamoFireService.swift in Sources */,
 				09513C0829BAA0F6004243BD /* AppDelegate.swift in Sources */,
+				09B1D5B329DA57DF003B2B58 /* CardDetailsRouter.swift in Sources */,
 				0985072729D3B89A00063E55 /* CardBackRouter.swift in Sources */,
 				09513C0A29BAA0F6004243BD /* SceneDelegate.swift in Sources */,
 				0918A75C29BFE76C005F8796 /* CardBackCell.swift in Sources */,
 				0972407E29D265FA00D10223 /* CardSearchView + Constraints.swift in Sources */,
 				0992891229D10D55004E5A3B /* CardSearchView + DatasourceDelegate.swift in Sources */,
 				0985072929D3B8A700063E55 /* CardBackPresenter.swift in Sources */,
+				09B1D5B129DA560E003B2B58 /* CardDetailsInteractor.swift in Sources */,
 				0992891429D10D73004E5A3B /* CardSearchView + SearchBarDelegate.swift in Sources */,
 				095DD2BB29CA71E10023A3CD /* Cards.swift in Sources */,
 				095DD2BD29CA749A0023A3CD /* SimpleCardCell.swift in Sources */,

@@ -10,8 +10,6 @@ import UIKit
 extension CardSearchView: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let presenter, presenter.filteredContent.count < 1 { return }
-        
-        //go to new Screen
     }
     
     
@@ -30,8 +28,7 @@ extension CardSearchView: UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let cardCell = cell as? SimpleCardCell
-        guard let presenter else { return }
-        cardCell?.configure(withData: presenter.filteredContent.count > 0 ? presenter.filteredContent[indexPath.row] : nil)
+        cardCell?.configure(withData: presenter?.filteredContent[safe: indexPath.row])
     }
     
 }

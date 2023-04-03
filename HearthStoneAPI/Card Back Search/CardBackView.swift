@@ -84,8 +84,7 @@ extension CardBackView: UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         let cardCell = cell as! CardBackCell
-        guard let presenter else { return }
-        cardCell.configure(presenter.content.count > 0 ? presenter.content[indexPath.row] : nil)
+        cardCell.configure(presenter?.content[safe: indexPath.row])
         
     }
     
