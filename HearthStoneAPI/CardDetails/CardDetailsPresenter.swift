@@ -11,7 +11,7 @@ class CardDetailsPresenter: CardDetailsPresenterProtocol{
     var view: CardDetailsViewProtocol? = nil
     var interactor: CardDetailsInteractorProtocol? = nil
     
-    private var card: CardSimplified
+    var card: CardSimplified
     var cardData: CompleteCard? = nil
     
     init(card: CardSimplified){

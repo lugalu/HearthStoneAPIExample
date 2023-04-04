@@ -9,7 +9,10 @@ import UIKit
 
 extension CardSearchView: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let presenter, presenter.filteredContent.count < 1 { return }
+        guard let presenter, presenter.filteredContent.count > 1, let card = presenter.filteredContent[safe: indexPath.row]  else { return }
+        
+        let view = CardDetailsRouter.getView(withCard: card)
+        self.navigationController?.pushViewController(view, animated: true)
     }
     
     

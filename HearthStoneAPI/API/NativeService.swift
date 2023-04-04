@@ -64,7 +64,11 @@ class NativeService: DataProviderService{
     }
     
     func requestCompleteCard(withID id: String) async throws -> Data {
-        return Data()
+        guard let url = URL(string: APIKeys.API_ENDPOINT+"cards/\(id)") else { throw DataErrors.urlFail }
+        let request = URLRequest(apiUrl: url)
+        let (data, _) = try await URLSession.shared.data(for: request)
+        
+        return data
     }
     
 }
@@ -72,7 +76,7 @@ class NativeService: DataProviderService{
 extension URLRequest{
     
     init(apiUrl: URL){
-        self.init(url: apiUrl)
+        self.init(url: apiUrl,cachePolicy: .reloadRevalidatingCacheData)
         self.headers.add(name:"X-RapidAPI-Host" , value: APIKeys.API_HOST)
         self.headers.add(name: "X-RapidAPI-Key", value: APIKeys.API_KEY)
         self.httpMethod = "GET"
