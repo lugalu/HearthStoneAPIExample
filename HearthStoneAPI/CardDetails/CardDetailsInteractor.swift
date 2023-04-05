@@ -32,24 +32,29 @@ class CardDetailsInteractor: CardDetailsInteractorProtocol{
     func cardRequested(retrievedData data: Data) {
         Task{
             do{
-                var card = try JSONDecoder().decode(CompleteCard.self, from: data)
-                defer {
-                    presenter?.cardRequested(card)
+                var cards = try JSONDecoder().decode([CompleteCard].self, from: data) as [CompleteCard]
+                guard var card = cards.first else {
+                    failedToRequestCard()
+                    return
                 }
                 
-                guard let imagePath = card.img, let imageURL = URL(string: imagePath) else { return }
-                let imageData = try await service.downloadImage(imageURL)
-                
-                if let image = UIImage(data: imageData){
-                    card.insertImages(newImages: [image])
+                if let imagePath = card.img, let imageURL = URL(string: imagePath) {
+                    let imageData = try await service.downloadImage(imageURL)
+
+                    if let image = UIImage(data: imageData){
+                        card.insertImages(newImages: [image])
+                    }
                 }
-                
-                guard let goldPath = card.imgGold, goldPath != imagePath, let goldURL = URL(string: goldPath) else{ return }
-                let goldData = try await service.downloadImage(goldURL)
-            
-                if let goldImage = UIImage(data: goldData){
-                    card.insertImages(newImages: [goldImage])
+
+                if let goldPath = card.imgGold, let goldURL = URL(string: goldPath) {
+                    let goldData = try await service.downloadImage(goldURL)
+
+                    if let goldImage = UIImage(data: goldData){
+                        card.insertImages(newImages: [goldImage])
+                    }
                 }
+
+                presenter?.cardRequested(card)
                 
             }catch{
                 print(error.localizedDescription)
@@ -64,3 +69,4 @@ class CardDetailsInteractor: CardDetailsInteractorProtocol{
     
     
 }
+

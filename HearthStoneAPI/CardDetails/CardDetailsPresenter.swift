@@ -24,7 +24,9 @@ class CardDetailsPresenter: CardDetailsPresenterProtocol{
     
     func cardRequested(_ card: CompleteCard) {
         self.cardData = card
-        view?.updateViewWithData()
+        DispatchQueue.main.async { [weak self] in
+            self?.view?.updateViewWithData()
+        }
     }
     
     
