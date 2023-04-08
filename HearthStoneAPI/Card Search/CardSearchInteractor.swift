@@ -10,43 +10,29 @@ import UIKit
 class CardSearchInteractor: CardSearchInteractorProtocol{
     var presenter: CardSearchPresenterProtocol?
     
-    var service: (SimpleCardsService & CommonDataService)
+    var dataService: (SimpleCardsService & CommonDataService)
+    var decoderService: SimpleCardDecoderService
     
-    init(presenter: CardSearchPresenterProtocol, service:  (SimpleCardsService & CommonDataService) = NativeService()){
+    init(presenter: CardSearchPresenterProtocol, service:  (SimpleCardsService & CommonDataService) = NativeService(), decoder: SimpleCardDecoderService = NativeDecoderService()){
         self.presenter = presenter
-        self.service = service
+        self.dataService = service
+        self.decoderService = decoder
     }
     
     func requestCardData() {
         Task{
             do{
-                let data = try await service.requestCards()
-                self.dataRetrieved(data)
-                
+                let data = try await dataService.requestCards()
+                let cards = try decoderService.decodeCards(with: data)
+                presenter?.newCards(cards)
             }catch{
                 failedToRetrieve(DataErrors.downloadFail)
             }
         }
     }
     
-    func dataRetrieved(_ data: Data) {
-        do{
-            let json = JSONDecoder()
-            let cards = try json.decode([String: [CardSimplified]].self, from: data)
-            var cardSet: Set<CardSimplified> = Set<CardSimplified>()
-            
-            for (_,value) in cards{
-                cardSet.formUnion(value)
-            }
-            let sortedCards = Array(cardSet).sorted(by: { $0.name < $1.name })
-            presenter?.newCards(sortedCards)
-        } catch{
-            failedToRetrieve(DataErrors.decodeFail)
-        }
-    }
-    
     func failedToRetrieve(_ error: Error) {
-        print("failed \(error.localizedDescription)")
+        print("failed \n\(error) \n\(error.localizedDescription)")
         presenter?.errorRetrieving(error.localizedDescription)
     }
     

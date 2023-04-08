@@ -11,7 +11,7 @@ class CardBackRouter: CardBackRouterProtocol{
     static func getView() -> (CardBackViewProtocol & TabBarConformant)? {
         let view: CardBackViewProtocol & TabBarConformant = CardBackView()
         var presenter: CardBackPresenterProtocol = CardBackPresenter()
-        var interactor: CardBackInteractorProtocol = CardBackInteractor()
+        var interactor: CardBackInteractorProtocol = CardBackInteractor(service: AlamoFireService(),decoder: SwiftyDecoderService())
         
         view.presenter = presenter
         presenter.view = view

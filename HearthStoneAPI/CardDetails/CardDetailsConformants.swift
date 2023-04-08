@@ -28,10 +28,11 @@ protocol CardDetailsPresenterProtocol {
 
 protocol CardDetailsInteractorProtocol {
     var service: CommonDataService & CompleteCardService {get set}
+    var decoderService: CompleteCardDecoderService {get set}
+
     var presenter: CardDetailsPresenterProtocol? {get set}
     
     func requestCard(withID id: String)
-    func cardRequested(retrievedData data: Data)
     func failedToRequestCard()
     
 }

@@ -11,7 +11,7 @@ class CardDetailsRouter: CardDetailsRouterProtocol{
     static func getView(withCard card: CardSimplified) -> CardDetailsViewProtocol {
         let view: CardDetailsViewProtocol = CardDetailsView()
         var presenter: CardDetailsPresenterProtocol = CardDetailsPresenter(card: card)
-        var interactor: CardDetailsInteractorProtocol = CardDetailsInteractor()
+        var interactor: CardDetailsInteractorProtocol = CardDetailsInteractor(service: AlamoFireService(),decoder: SwiftyDecoderService())
         
         view.presenter = presenter
         presenter.view = view

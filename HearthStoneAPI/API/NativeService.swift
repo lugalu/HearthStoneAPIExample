@@ -30,6 +30,7 @@ class NativeService: DataProviderService{
         guard let url = URL(string: APIKeys.API_ENDPOINT+"cards/search/") else { throw DataErrors.urlFail }
         var urlRequest = URLRequest(apiUrl: url)
         
+        
         for (requestKey, requestValue) in request{
             urlRequest.addValue(requestValue, forHTTPHeaderField: requestKey)
         }
@@ -76,7 +77,7 @@ class NativeService: DataProviderService{
 extension URLRequest{
     
     init(apiUrl: URL){
-        self.init(url: apiUrl,cachePolicy: .reloadRevalidatingCacheData)
+        self.init(url: apiUrl,cachePolicy: .useProtocolCachePolicy)
         self.headers.add(name:"X-RapidAPI-Host" , value: APIKeys.API_HOST)
         self.headers.add(name: "X-RapidAPI-Key", value: APIKeys.API_KEY)
         self.httpMethod = "GET"

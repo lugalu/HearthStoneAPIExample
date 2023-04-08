@@ -26,7 +26,7 @@ class CardBack: Decodable {
     var image:UIImage? = nil
     var animatedImage: UIImage? = nil
     
-    init(cardId: Int,name: String, description: String, imgPath: String, imgAnimated: String) {
+    init(cardId: Int,name: String?, description: String?, imgPath: String?, imgAnimated: String?) {
         self.cardBackId = cardId
         self.name = name
         self.description = description

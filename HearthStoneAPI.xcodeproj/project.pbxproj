@@ -47,6 +47,9 @@
 		09B1D5AF29DA54E0003B2B58 /* CardDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B1D5AE29DA54E0003B2B58 /* CardDetailsPresenter.swift */; };
 		09B1D5B129DA560E003B2B58 /* CardDetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B1D5B029DA560E003B2B58 /* CardDetailsInteractor.swift */; };
 		09B1D5B329DA57DF003B2B58 /* CardDetailsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B1D5B229DA57DF003B2B58 /* CardDetailsRouter.swift */; };
+		09DB404929E0EA85000C4F8B /* DecoderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DB404829E0EA85000C4F8B /* DecoderService.swift */; };
+		09DB404C29E0EB55000C4F8B /* NativeDecodeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DB404B29E0EB55000C4F8B /* NativeDecodeService.swift */; };
+		09DB404E29E0EFFA000C4F8B /* SwiftyDecoderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DB404D29E0EFFA000C4F8B /* SwiftyDecoderService.swift */; };
 		4B666CA3EDA285D103D53C20 /* Pods_HearthStoneAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02C83017823898075BEFE139 /* Pods_HearthStoneAPI.framework */; };
 /* End PBXBuildFile section */
 
@@ -94,6 +97,9 @@
 		09B1D5AE29DA54E0003B2B58 /* CardDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailsPresenter.swift; sourceTree = "<group>"; };
 		09B1D5B029DA560E003B2B58 /* CardDetailsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailsInteractor.swift; sourceTree = "<group>"; };
 		09B1D5B229DA57DF003B2B58 /* CardDetailsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailsRouter.swift; sourceTree = "<group>"; };
+		09DB404829E0EA85000C4F8B /* DecoderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoderService.swift; sourceTree = "<group>"; };
+		09DB404B29E0EB55000C4F8B /* NativeDecodeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeDecodeService.swift; sourceTree = "<group>"; };
+		09DB404D29E0EFFA000C4F8B /* SwiftyDecoderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyDecoderService.swift; sourceTree = "<group>"; };
 		501BCD7A259C0145945EC0AA /* Pods-HearthStoneAPI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HearthStoneAPI.debug.xcconfig"; path = "Target Support Files/Pods-HearthStoneAPI/Pods-HearthStoneAPI.debug.xcconfig"; sourceTree = "<group>"; };
 		BB7149271998CEF2D5A50279 /* Pods-HearthStoneAPI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HearthStoneAPI.release.xcconfig"; path = "Target Support Files/Pods-HearthStoneAPI/Pods-HearthStoneAPI.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -152,6 +158,7 @@
 				094CBDA929BBF2DA0076EE00 /* TabBarConformant.swift */,
 				0914DF2129BE919A00E10E50 /* Skeletonable.swift */,
 				09A95C4B29C140B80019C1FC /* DataProviderService.swift */,
+				09DB404829E0EA85000C4F8B /* DecoderService.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -186,6 +193,7 @@
 		09513C0629BAA0F6004243BD /* HearthStoneAPI */ = {
 			isa = PBXGroup;
 			children = (
+				09DB404A29E0EB48000C4F8B /* Decoders */,
 				0972407A29D2620000D10223 /* Extensions */,
 				09A95C4D29C140D20019C1FC /* Models */,
 				094CBDAB29BBF2F40076EE00 /* Components */,
@@ -255,6 +263,15 @@
 				096174DA29DD008C0046BC13 /* CardDetailsView + StackViewConfiguration.swift */,
 			);
 			path = CardDetails;
+			sourceTree = "<group>";
+		};
+		09DB404A29E0EB48000C4F8B /* Decoders */ = {
+			isa = PBXGroup;
+			children = (
+				09DB404B29E0EB55000C4F8B /* NativeDecodeService.swift */,
+				09DB404D29E0EFFA000C4F8B /* SwiftyDecoderService.swift */,
+			);
+			path = Decoders;
 			sourceTree = "<group>";
 		};
 		3693F37BD7D594A674446DCC /* Frameworks */ = {
@@ -398,6 +415,7 @@
 				0972408029D2690300D10223 /* APIErrors.swift in Sources */,
 				0914DF2629BE947A00E10E50 /* CardSearchInteractor.swift in Sources */,
 				09A95C4829C1379E0019C1FC /* AlamoFireService.swift in Sources */,
+				09DB404E29E0EFFA000C4F8B /* SwiftyDecoderService.swift in Sources */,
 				09513C0829BAA0F6004243BD /* AppDelegate.swift in Sources */,
 				09B1D5B329DA57DF003B2B58 /* CardDetailsRouter.swift in Sources */,
 				096174D929DD00750046BC13 /* CardDetailsView + Constraints.swift in Sources */,
@@ -413,7 +431,9 @@
 				095DD2BB29CA71E10023A3CD /* Cards.swift in Sources */,
 				095DD2BD29CA749A0023A3CD /* SimpleCardCell.swift in Sources */,
 				096C2EA629BAA5C9006865CF /* TabBar.swift in Sources */,
+				09DB404C29E0EB55000C4F8B /* NativeDecodeService.swift in Sources */,
 				094CBDAA29BBF2DA0076EE00 /* TabBarConformant.swift in Sources */,
+				09DB404929E0EA85000C4F8B /* DecoderService.swift in Sources */,
 				0914DF2229BE919A00E10E50 /* Skeletonable.swift in Sources */,
 				094CBDA729BBF01B0076EE00 /* CardBackView.swift in Sources */,
 				0985072529D3B89200063E55 /* CardBackInteractor.swift in Sources */,

@@ -16,9 +16,10 @@ protocol CardBackViewProtocol: UIViewController{
 protocol CardBackInteractorProtocol{
     var presenter: CardBackPresenterProtocol? {get set}
     var service:  (CardBacksService & CommonDataService) {get set}
+    var decoderService: CardBackDecoderService {get set}
+
 
     func requestCardData()
-    func dataRetrieved(_ data: Data)
     func failedToRetrieve(_ error: Error)
 }
 

@@ -93,6 +93,25 @@ struct CompleteCard: Decodable{
         }
     }
     
+    init( name: String, cardSet: String?, type: String?, faction: String?, rarity: String?, cost: Int?, attack: Int?, health: Int?, text: String?, flavor: String?, artist: String?, collectible: Bool?, elite: Bool?, race: String?, img: String?, imgGold: String?){
+        self.name = name
+        self.cardSet = cardSet
+        self.type =  type
+        self.faction = faction
+        self.rarity = rarity
+        self.cost = cost
+        self.attack = attack
+        self.health = health
+        self.text = text
+        self.flavor = flavor
+        self.artist = artist
+        self.collectible = collectible
+        self.elite = elite
+        self.race = race
+        self.img = img
+        self.imgGold = imgGold
+    }
+    
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         name = try values.decodeIfPresent(String.self, forKey: .name) ?? "error"
